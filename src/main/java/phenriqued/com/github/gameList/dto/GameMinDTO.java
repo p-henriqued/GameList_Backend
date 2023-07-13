@@ -1,6 +1,7 @@
 package phenriqued.com.github.gameList.dto;
 
 import phenriqued.com.github.gameList.entities.Game;
+import phenriqued.com.github.gameList.projections.GameMinProjection;
 
 public class GameMinDTO {
 	
@@ -19,7 +20,16 @@ public class GameMinDTO {
 		this.imgUrl = entity.getImgUrl();
 		this.shortDescription = entity.getShortDescription();
 	}
-
+	
+	public GameMinDTO(GameMinProjection gameMinProjection) {
+		this.id = gameMinProjection.getId();
+		this.title = gameMinProjection.getTitle();
+		this.year = gameMinProjection.getYear();
+		this.imgUrl = gameMinProjection.getImgUrl();
+		this.shortDescription = gameMinProjection.getShortDescription();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}

@@ -11,7 +11,7 @@ import phenriqued.com.github.gameList.projections.GameMinProjection;
 public interface GameRepository extends JpaRepository<Game, Long>{
 	
 	@Query(nativeQuery = true, value = """
-			SELECT tb_game.id, tb_game.title, tb_game.game_year AS `year`, tb_game.img_url AS imgUrl,
+			SELECT tb_game.id, tb_game.title, tb_game.game_year AS gameYear, tb_game.img_url AS imgUrl,
 			tb_game.short_description AS shortDescription, tb_belonging.position
 			FROM tb_game
 			INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
@@ -22,7 +22,7 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	
 	/*
 	@Query(nativeQuery = false, value = """
-			SELECT g.id, g.title, g.year AS game_year, g.imgUrl AS imgUrl, g.shortDescription AS shortDescription, b.position
+			SELECT g.id, g.title, g.year AS gameYear, g.imgUrl, g.shortDescription, b.position
 			FROM Game g
 			JOIN Belonging b ON g.id = b.id.game.id
 			WHERE b.id = :listId
